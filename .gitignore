@@ -1,0 +1,32 @@
+# Dependency directories
+# (אנחנו חייבים להתעלם מתיקיית הספריות כי היא ענקית)
+node_modules/
+
+# Build outputs
+# (קבצים שנוצרים אוטומטית בזמן בנייה)
+dist/
+build/
+out/
+
+# Database files
+# (חשוב מאוד כדי שלא יהיו התנגשויות בבסיס הנתונים)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+
+# Environment variables
+# (שומר על סיסמאות והגדרות אישיות מחוץ ל-GitHub)
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# --- שים לב: מחקתי מכאן את package-lock.json ---
+# השרת ב-Render חייב את הקובץ הזה כדי לדעת מה להתקין!
