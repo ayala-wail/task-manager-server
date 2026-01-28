@@ -12,11 +12,28 @@ import tasksRouter from './src/routes/tasks.js';
 import commentsRouter from './src/routes/comments.js';
 
 const app = express();
+// הגדרת CORS משופרת
+const corsOptions = {
+  origin: '*', // מאפשר לכולם, תוכל להחליף לכתובת הספציפית של הלקוח בהמשך
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200 // קריטי לפתרון השגיאה שקיבלת ברנדר
+};
 
-app.use(helmet());
-app.use(cors({ origin: '*'}));
+app.use(cors(corsOptions));
+
+// עדכון הגדרות Helmet שלא יחסמו משאבים חיצוניים
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
+
 app.use(express.json());
 app.use(morgan('dev'));
+
+// app.use(helmet());
+// app.use(cors({ origin: '*'}));
+// app.use(express.json());
+// app.use(morgan('dev'));
 
 // Health
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));
